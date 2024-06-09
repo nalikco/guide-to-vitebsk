@@ -3,7 +3,7 @@
 CONTAINER_NAME="guide-to-vitebsk-php"
 
 if [ $# -eq 0 ]; then
-    echo "Usage: manage <build|up|stop|down|artisan|composer|npm> [arguments]"
+    echo "Usage: manage <build|up|stop|down|artisan|composer|rector|node|npm> [arguments]"
     exit 1
 fi
 
@@ -30,6 +30,9 @@ case $COMMAND in
     composer)
         docker exec -it $CONTAINER_NAME composer $ARGS
         ;;
+    rector)
+        docker exec -it $CONTAINER_NAME ./vendor/bin/rector
+        ;;
     node)
         docker exec -it $CONTAINER_NAME node $ARGS
         ;;
@@ -38,7 +41,7 @@ case $COMMAND in
         ;;
     *)
         echo "Unknown command: $COMMAND"
-        echo "Usage: manage <build|up|stop|down|artisan|composer|node|npm> [arguments]"
+        echo "Usage: manage <build|up|stop|down|artisan|composer|rector|node|npm> [arguments]"
         exit 1
         ;;
 esac

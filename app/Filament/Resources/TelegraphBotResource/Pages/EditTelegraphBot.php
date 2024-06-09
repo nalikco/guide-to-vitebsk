@@ -10,6 +10,7 @@ class EditTelegraphBot extends EditRecord
 {
     protected static string $resource = TelegraphBotResource::class;
 
+    #[\Override]
     protected function getHeaderActions(): array
     {
         return [

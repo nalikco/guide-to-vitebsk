@@ -18,6 +18,7 @@ class TelegraphBotResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -33,6 +34,7 @@ class TelegraphBotResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -52,6 +54,7 @@ class TelegraphBotResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -59,6 +62,7 @@ class TelegraphBotResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

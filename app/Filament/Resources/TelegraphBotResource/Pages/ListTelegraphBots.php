@@ -10,6 +10,7 @@ class ListTelegraphBots extends ListRecords
 {
     protected static string $resource = TelegraphBotResource::class;
 
+    #[\Override]
     protected function getHeaderActions(): array
     {
         return [

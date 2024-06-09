@@ -17,6 +17,7 @@ class BotCreated implements BotProvider
     {
     }
 
+    #[\Override]
     public function getBot(): TelegraphBot
     {
         return $this->bot;
