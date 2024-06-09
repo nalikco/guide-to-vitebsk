@@ -19,10 +19,10 @@ class TelegramUserFactory extends Factory
     {
         return [
             'telegram_id' => rand(100000, 999999),
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'username' => fake()->userName(),
-            'language_code' => fake()->languageCode(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'username' => $this->faker->userName(),
+            'language_code' => $this->faker->languageCode(),
         ];
     }
 }

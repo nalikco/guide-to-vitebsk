@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TelegramUser extends Model
+class Place extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,15 +16,14 @@ class TelegramUser extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'telegram_id',
-        'first_name',
-        'last_name',
-        'username',
-        'language_code',
+        'bot_id',
+        'category_id',
+        'name',
+        'description',
+        'address',
+        'phone_number',
+        'opening_hours',
+        'instagram',
+        'yandex_maps',
     ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
 }
