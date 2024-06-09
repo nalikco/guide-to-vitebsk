@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PlaceCategory extends Model
@@ -19,4 +20,9 @@ class PlaceCategory extends Model
         'parent_id',
         'name',
     ];
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(self::class);
+    }
 }
