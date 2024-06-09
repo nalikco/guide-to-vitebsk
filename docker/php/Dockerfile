@@ -1,17 +1,13 @@
-FROM php:8.3.8-fpm
+FROM php:8.3.8-fpm-alpine3.20
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 COPY --from=composer:2.7.6 /usr/bin/composer /usr/local/bin/composer
 
-RUN apt-get update -y && \
-    apt-get install wget libpq-dev libzip-dev libpng-dev libjpeg-dev git curl nodejs zip -y && \
-    docker-php-ext-install pdo zip pdo_pgsql && docker-php-ext-configure gd --with-jpeg && docker-php-ext-install -j$(nproc) gd
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN apt-get install -y libicu-dev \
-  && docker-php-ext-configure intl \
-  && docker-php-ext-install intl
+RUN install-php-extensions gd intl zip pgsql pdo_pgsql redis yaml decimal bcmath bz2
 
-RUN pecl install redis && docker-php-ext-enable redis
+RUN apk add nodejs npm
 
 WORKDIR /var/www

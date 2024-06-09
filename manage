@@ -1,0 +1,44 @@
+#!/bin/bash
+
+CONTAINER_NAME="guide-to-vitebsk-php"
+
+if [ $# -eq 0 ]; then
+    echo "Usage: manage <build|up|stop|down|artisan|composer|npm> [arguments]"
+    exit 1
+fi
+
+COMMAND=$1
+shift
+ARGS="$@"
+
+case $COMMAND in
+    build)
+        docker compose --env-file .env build $ARGS
+        ;;
+    up)
+        docker compose --env-file .env up $ARGS
+        ;;
+    stop)
+        docker compose --env-file .env stop $ARGS
+        ;;
+    down)
+        docker compose --env-file .env down $ARGS
+        ;;
+    artisan)
+        docker exec -it $CONTAINER_NAME php artisan $ARGS
+        ;;
+    composer)
+        docker exec -it $CONTAINER_NAME composer $ARGS
+        ;;
+    node)
+        docker exec -it $CONTAINER_NAME node $ARGS
+        ;;
+    npm)
+        docker exec -it $CONTAINER_NAME npm $ARGS
+        ;;
+    *)
+        echo "Unknown command: $COMMAND"
+        echo "Usage: manage <build|up|stop|down|artisan|composer|node|npm> [arguments]"
+        exit 1
+        ;;
+esac
