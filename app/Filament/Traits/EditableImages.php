@@ -2,7 +2,6 @@
 
 namespace App\Filament\Traits;
 
-use App\Models\PlaceImage;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +14,7 @@ trait EditableImages
         $record = static::getRecord();
 
         foreach ($record->images as $image) {
-            $data['images'][] = sprintf("%s/%s.%s", PlaceImage::IMAGES_PATH, $image->name, $image->extension);
+            $data['images'][] = sprintf("%s/%s.%s", $this->record->getImagesPath(), $image->name, $image->extension);
         }
 
         return $data;
@@ -39,6 +38,7 @@ trait EditableImages
                 $extension = $pathInfo['extension'];
 
                 $this->record->images()->create([
+                    'path' => $this->record->getImagesPath(),
                     'name' => $fileName,
                     'extension' => $extension,
                 ]);

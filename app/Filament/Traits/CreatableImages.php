@@ -23,6 +23,7 @@ trait CreatableImages
             $extension = $pathInfo['extension'];
 
             $this->record->images()->create([
+                'path' => $this->record->getImagePath(),
                 'name' => $fileName,
                 'extension' => $extension,
             ]);

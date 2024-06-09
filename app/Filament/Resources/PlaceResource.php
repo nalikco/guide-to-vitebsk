@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PlaceResource\Pages;
 use App\Models\Place;
-use App\Models\PlaceImage;
+use App\Models\Upload;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -158,7 +158,7 @@ class PlaceResource extends Resource
                     ->label(__('telegram_user.fields.id')),
                 Tables\Columns\ImageColumn::make('images')
                     ->square()
-                    ->getStateUsing(fn(Place $record) => $record->images->map(fn(PlaceImage $image) => asset(sprintf('storage/%s/%s.%s', PlaceImage::IMAGES_PATH, $image->name, $image->extension)))->reverse())
+                    ->getStateUsing(fn(Place $record) => $record->images->map(fn(Upload $image) => asset(sprintf('storage/%s/%s.%s', $record->getImagesPath(), $image->name, $image->extension)))->reverse())
                     ->label(__('place.fields.images')),
                 Tables\Columns\CheckboxColumn::make('active')
                     ->sortable()

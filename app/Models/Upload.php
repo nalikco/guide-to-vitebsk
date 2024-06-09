@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class PlaceImage extends Model
+class Upload extends Model
 {
     use HasFactory;
-
-    public const string IMAGES_PATH = 'places';
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +16,13 @@ class PlaceImage extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'place_id',
+        'path',
         'name',
         'extension',
     ];
+
+    public function uploadable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

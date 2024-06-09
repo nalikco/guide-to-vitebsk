@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Contracts\Imageable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Override;
 
-class Place extends Model
+class Place extends Model implements Imageable
 {
     use HasFactory, SoftDeletes;
 
@@ -40,8 +42,14 @@ class Place extends Model
         return $this->belongsTo(PlaceCategory::class, 'category_id');
     }
 
-    public function images(): HasMany
+    public function images(): MorphMany
     {
-        return $this->hasMany(PlaceImage::class);
+        return $this->morphMany(Upload::class, 'uploadable');
+    }
+
+    #[Override]
+    public function getImagesPath(): string
+    {
+        return 'places';
     }
 }
