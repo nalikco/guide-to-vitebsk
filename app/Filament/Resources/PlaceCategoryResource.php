@@ -33,24 +33,10 @@ class PlaceCategoryResource extends Resource
             ->schema([
                 Select::make('parent_id')
                     ->relationship(name: 'parent', titleAttribute: 'name')
-                    ->label(__('place.category.fields.parent_id'))
+                    ->label(__('place.category.fields.parent'))
                     ->native(false)
                     ->searchable()
-                    ->preload()
-                    ->createOptionForm([
-                        TextInput::make('name')
-                            ->label(__('place.category.fields.name'))
-                            ->required()
-                            ->string()
-                            ->maxLength(255),
-                    ])
-                    ->editOptionForm([
-                        TextInput::make('name')
-                            ->label(__('place.category.fields.name'))
-                            ->required()
-                            ->string()
-                            ->maxLength(255),
-                    ]),
+                    ->preload(),
                 TextInput::make('name')
                     ->label(__('place.category.fields.name'))
                     ->required()
@@ -70,7 +56,7 @@ class PlaceCategoryResource extends Resource
                 Tables\Columns\TextColumn::make('parent.name')
                     ->sortable()
                     ->placeholder(__('place.category.columns.placeholder'))
-                    ->label(__('place.category.fields.parent_id')),
+                    ->label(__('place.category.fields.parent')),
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->label(__('place.category.fields.name')),
@@ -80,7 +66,7 @@ class PlaceCategoryResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('status')
-                    ->label(__('place.category.fields.parent_id'))
+                    ->label(__('place.category.fields.parent'))
                     ->options(PlaceCategory::all()->pluck('name', 'id'))
                     ->attribute('parent_id')
                     ->native(false)

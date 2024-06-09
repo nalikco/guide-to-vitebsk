@@ -25,6 +25,7 @@ class PlaceFactory extends Factory
             'opening_hours' => 'пн-вс, 09:00-22:00',
             'instagram' => $this->faker->url(),
             'yandex_maps' => $this->faker->url(),
+            'images' => [],
         ];
     }
 }

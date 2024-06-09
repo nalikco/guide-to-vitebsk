@@ -24,7 +24,7 @@ return new class extends Migration {
                 ->cascadeOnDelete();
             $table->string('name');
             $table->text('description');
-            $table->string('address')->nullable();
+            $table->string('address');
             $table->string('phone_number')->nullable();
             $table->string('opening_hours')->nullable();
             $table->string('instagram')->nullable();

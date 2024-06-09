@@ -6,7 +6,7 @@ services:
         container_name: guide-to-vitebsk-php
         restart: unless-stopped
         volumes:
-            - .:/var/www:cached
+            - .:/var/www
     nginx:
         image: nginx:1.27.0-alpine3.19
         container_name: guide-to-vitebsk-nginx
