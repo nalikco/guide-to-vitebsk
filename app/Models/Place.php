@@ -20,6 +20,7 @@ class Place extends Model
     protected $fillable = [
         'bot_id',
         'category_id',
+        'active',
         'name',
         'description',
         'address',

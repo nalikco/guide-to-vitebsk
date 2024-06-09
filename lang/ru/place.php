@@ -12,6 +12,7 @@ return [
         ],
     ],
     'fields' => [
+        'active' => 'Активно',
         'bot' => 'Бот',
         'category' => 'Категория',
         'description' => 'Описание',

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PlaceResource\Pages;
 use App\Models\Place;
 use App\Models\PlaceImage;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -140,6 +141,10 @@ class PlaceResource extends Resource
                     ->string()
                     ->prefix('https://yandex.by/maps/')
                     ->maxLength(255),
+                Checkbox::make('active')
+                    ->label(__('place.fields.active'))
+                    ->required()
+                    ->default(true),
             ]);
     }
 
@@ -155,6 +160,9 @@ class PlaceResource extends Resource
                     ->square()
                     ->getStateUsing(fn(Place $record) => $record->images->map(fn(PlaceImage $image) => asset(sprintf('storage/%s/%s.%s', PlaceImage::IMAGES_PATH, $image->name, $image->extension)))->reverse())
                     ->label(__('place.fields.images')),
+                Tables\Columns\CheckboxColumn::make('active')
+                    ->sortable()
+                    ->label(__('place.fields.active')),
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->label(__('place.category.fields.name')),
@@ -163,7 +171,9 @@ class PlaceResource extends Resource
                     ->label(__('place.category.fields.created_at')),
             ])
             ->filters([
-                //
+                Tables\Filters\TernaryFilter::make('active')
+                    ->label(__('place.fields.active'))
+                    ->native(false),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

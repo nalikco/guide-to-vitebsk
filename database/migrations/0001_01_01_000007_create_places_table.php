@@ -22,6 +22,7 @@ return new class extends Migration {
                 ->constrained('place_categories')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            $table->boolean('active')->default(false);
             $table->string('name');
             $table->text('description');
             $table->string('address');
