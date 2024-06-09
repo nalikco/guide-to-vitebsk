@@ -39,6 +39,9 @@ case $COMMAND in
     npm)
         docker exec -it $CONTAINER_NAME npm $ARGS
         ;;
+    rules)
+        sudo chmod 777 -R storage/ bootstrap/cache/
+        ;;
     *)
         echo "Unknown command: $COMMAND"
         echo "Usage: manage <build|up|stop|down|artisan|composer|rector|node|npm> [arguments]"
