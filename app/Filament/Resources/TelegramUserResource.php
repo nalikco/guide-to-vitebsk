@@ -15,6 +15,7 @@ class TelegramUserResource extends Resource
     protected static ?string $model = TelegramUser::class;
     protected static ?string $label = 'Telegram пользователь';
     protected static ?string $pluralLabel = 'Telegram пользователи';
+    protected static ?string $navigationGroup = 'Пользователи';
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
@@ -55,17 +56,26 @@ class TelegramUserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->sortable()
                     ->label(__('telegram_user.fields.id')),
                 Tables\Columns\TextColumn::make('telegram_id')
+                    ->sortable()
                     ->label(__('telegram_user.fields.telegram_id')),
                 Tables\Columns\TextColumn::make('first_name')
+                    ->sortable()
                     ->label(__('telegram_user.fields.first_name')),
                 Tables\Columns\TextColumn::make('last_name')
+                    ->sortable()
                     ->label(__('telegram_user.fields.last_name')),
                 Tables\Columns\TextColumn::make('username')
+                    ->sortable()
                     ->label(__('telegram_user.fields.username')),
                 Tables\Columns\TextColumn::make('language_code')
+                    ->sortable()
                     ->label(__('telegram_user.fields.language_code')),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->label(__('telegram_user.fields.created_at')),
             ])
             ->filters([
                 //

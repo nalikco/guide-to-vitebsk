@@ -15,6 +15,7 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
     protected static ?string $label = 'Пользователь';
     protected static ?string $pluralLabel = 'Пользователи';
+    protected static ?string $navigationGroup = 'Пользователи';
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
@@ -53,14 +54,20 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->sortable()
                     ->label(__('telegram_user.fields.id')),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
                     ->label(__('user.fields.email')),
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->label(__('user.fields.name')),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->label(__('user.fields.created_at')),
             ])
             ->filters([
-                //
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

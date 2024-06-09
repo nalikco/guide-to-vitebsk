@@ -15,6 +15,7 @@ use Override;
 class TelegraphBotResource extends Resource
 {
     protected static ?string $model = TelegraphBot::class;
+    protected static ?string $navigationGroup = 'Telegram';
 
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
@@ -40,9 +41,14 @@ class TelegraphBotResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->sortable()
                     ->label(__('telegram_user.fields.id')),
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->label(__('telegraph.fields.name')),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->label(__('telegraph.fields.created_at')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

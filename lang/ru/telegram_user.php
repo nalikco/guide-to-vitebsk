@@ -8,5 +8,6 @@ return [
         'last_name' => 'Фамилия',
         'username' => 'Имя пользователя',
         'language_code' => 'Язык',
+        'created_at' => 'Дата регистрации',
     ],
 ];

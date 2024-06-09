@@ -4,6 +4,7 @@ return [
     'fields' => [
         'name' => 'Имя',
         'token' => 'Токен',
+        'created_at' => 'Дата добавления',
     ],
     'actions' => [
         'webhook' => [
