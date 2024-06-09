@@ -2,6 +2,8 @@
 
 namespace App\Contracts;
 
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
 interface Imageable
 {
     /**
@@ -10,4 +12,6 @@ interface Imageable
      * @return string Path.
      */
     public function getImagesPath(): string;
+
+    public function images(): MorphMany;
 }

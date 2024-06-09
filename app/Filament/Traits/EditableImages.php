@@ -2,8 +2,9 @@
 
 namespace App\Filament\Traits;
 
+use App\Services\UploadService;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 trait EditableImages
 {
@@ -29,20 +30,7 @@ trait EditableImages
 
     protected function afterSave(): void
     {
-        DB::transaction(function () {
-            $this->record->images()->forceDelete();
-
-            $this->images->each(function (string $image) {
-                $pathInfo = pathinfo($image);
-                $fileName = $pathInfo['filename'];
-                $extension = $pathInfo['extension'];
-
-                $this->record->images()->create([
-                    'path' => $this->record->getImagesPath(),
-                    'name' => $fileName,
-                    'extension' => $extension,
-                ]);
-            });
-        });
+        $uploadService = App::make(UploadService::class);
+        $this->record = $uploadService->replaceImages($this->record, $this->images);
     }
 }

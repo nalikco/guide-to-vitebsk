@@ -2,7 +2,9 @@
 
 namespace App\Filament\Traits;
 
+use App\Services\UploadService;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 
 trait CreatableImages
 {
@@ -17,16 +19,7 @@ trait CreatableImages
 
     protected function afterCreate(): void
     {
-        $this->images->each(function (string $image) {
-            $pathInfo = pathinfo($image);
-            $fileName = $pathInfo['filename'];
-            $extension = $pathInfo['extension'];
-
-            $this->record->images()->create([
-                'path' => $this->record->getImagePath(),
-                'name' => $fileName,
-                'extension' => $extension,
-            ]);
-        });
+        $uploadService = App::make(UploadService::class);
+        $this->record = $uploadService->replaceImages($this->record, $this->images);
     }
 }
