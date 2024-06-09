@@ -15,10 +15,11 @@ class TelegramUserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    #[\Override]
     public function definition(): array
     {
         return [
-            'telegram_id' => rand(100000, 999999),
+            'telegram_id' => random_int(100000, 999999),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'username' => $this->faker->userName(),
