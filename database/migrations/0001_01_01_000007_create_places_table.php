@@ -19,7 +19,7 @@ return new class extends Migration {
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->foreignIdFor(PlaceCategory::class, 'category_id')
-                ->constrained('places_categories')
+                ->constrained('place_categories')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->string('name');
