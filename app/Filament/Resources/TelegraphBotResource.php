@@ -13,8 +13,6 @@ use Filament\Tables\Table;
 class TelegraphBotResource extends Resource
 {
     protected static ?string $model = TelegraphBot::class;
-    protected static ?string $label = "Бот";
-    protected static ?string $pluralLabel = "Боты";
 
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
