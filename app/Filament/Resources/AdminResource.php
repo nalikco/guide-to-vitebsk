@@ -2,24 +2,26 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Models\User;
+use App\Filament\Resources\AdminResource\Pages;
+use App\Models\Admin;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Override;
 
-class UserResource extends Resource
+class AdminResource extends Resource
 {
-    protected static ?string $model = User::class;
-    protected static ?string $label = 'Пользователь';
-    protected static ?string $pluralLabel = 'Пользователи';
-    protected static ?string $navigationGroup = 'Пользователи';
+    protected static ?string $model = Admin::class;
+    protected static ?string $label = 'Администратор';
+    protected static ?string $pluralLabel = 'Администраторы';
+    protected static ?string $navigationGroup = 'Администраторы';
 
     protected static ?string $navigationIcon = 'heroicon-o-star';
 
-    #[\Override]
+    #[Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -34,6 +36,9 @@ class UserResource extends Resource
                     ->unique()
                     ->email()
                     ->maxLength(255),
+                DatePicker::make('email_verified_at')
+                    ->label(__('user.fields.email_verified_at'))
+                    ->nullable(),
                 TextInput::make('password')
                     ->label(__('user.fields.password'))
                     ->password()
@@ -48,7 +53,7 @@ class UserResource extends Resource
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function table(Table $table): Table
     {
         return $table
@@ -59,6 +64,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->sortable()
                     ->label(__('user.fields.email')),
+                Tables\Columns\CheckboxColumn::make('email_verified_at')
+                    ->sortable()
+                    ->disabled()
+                    ->label(__('user.fields.email_verified_at')),
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->label(__('user.fields.name')),
@@ -79,7 +88,7 @@ class UserResource extends Resource
             ]);
     }
 
-    #[\Override]
+    #[Override]
     public static function getRelations(): array
     {
         return [
@@ -87,13 +96,13 @@ class UserResource extends Resource
         ];
     }
 
-    #[\Override]
+    #[Override]
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListAdmins::route('/'),
+            'create' => Pages\CreateAdmin::route('/create'),
+            'edit' => Pages\EditAdmin::route('/{record}/edit'),
         ];
     }
 }
