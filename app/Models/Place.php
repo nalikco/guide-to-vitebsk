@@ -42,6 +42,7 @@ class Place extends Model implements Imageable
         return $this->belongsTo(PlaceCategory::class, 'category_id');
     }
 
+    #[Override]
     public function images(): MorphMany
     {
         return $this->morphMany(Upload::class, 'uploadable');

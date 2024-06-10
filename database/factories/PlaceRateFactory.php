@@ -2,23 +2,24 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\PlaceRate;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Override;
 
 /**
- * @extends Factory<User>
+ * @extends Factory<PlaceRate>
  */
-class UserFactory extends Factory
+class PlaceRateFactory extends Factory
 {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    #[Override]
+    #[\Override]
     public function definition(): array
     {
-        return [];
+        return [
+            'rate' => random_int(1, 5),
+        ];
     }
 }
