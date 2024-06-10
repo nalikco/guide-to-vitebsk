@@ -38,8 +38,7 @@ class Admin extends Authenticatable
      *
      * @return array<string, string>
      */
-    #[Override]// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
+    #[Override]
     protected function casts(): array
     {
         return [
