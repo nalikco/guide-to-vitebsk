@@ -7,6 +7,8 @@ services:
         restart: unless-stopped
         volumes:
             - .:/var/www
+        environment:
+            ASSET_URL: "${APP_URL}"
     nginx:
         image: nginx:1.27.0-alpine3.19
         container_name: guide-to-vitebsk-nginx
