@@ -47,4 +47,9 @@ class Admin extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function canAccessPanel(): bool
+    {
+        return $this->hasVerifiedEmail();
+    }
 }
