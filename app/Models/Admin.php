@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Override;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable, MustVerifyEmail;
 
@@ -47,7 +49,8 @@ class Admin extends Authenticatable
         ];
     }
 
-    public function canAccessPanel(): bool
+    #[\Override]
+    public function canAccessPanel(Panel $panel): bool
     {
         return $this->hasVerifiedEmail();
     }
