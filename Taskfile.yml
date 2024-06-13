@@ -41,7 +41,7 @@ tasks:
     desc: "Launches NPM."
     cmds:
       - docker exec -it $CONTAINER_NAME npm {{.CLI_ARGS}}
-  rules:
+  perms:
     desc: "Sets the necessary permissions on directories."
     cmds:
       - sudo chmod 777 -R storage bootstrap/cache vendor
