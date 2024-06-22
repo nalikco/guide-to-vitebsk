@@ -39,12 +39,3 @@ services:
             POSTGRES_USER: guide_to_vitebsk
             POSTGRES_PASSWORD: "${DB_PASSWORD}"
             POSTGRES_DB: guide_to_vitebsk
-    adminer:
-        image: adminer:4.8.1-standalone
-        container_name: guide-to-vitebsk-adminer
-        restart: unless-stopped
-        ports:
-            - "${ADMINER_PORT}:8080"
-        environment:
-            ADMINER_DEFAULT_SERVER: postgres
-            ADMINER_DESIGN: hydra
