@@ -39,7 +39,8 @@ tasks:
     desc: "Formats all code."
     cmds:
       - docker exec -it $CONTAINER_NAME npm run format
-      - docker exec -it $CONTAINER_NAME ./vendor/bin/pint
+      - task:
+          rector
   test:
     desc: "Runs tests."
     cmd: docker exec -it $CONTAINER_NAME php artisan test {{.CLI_ARGS}}
