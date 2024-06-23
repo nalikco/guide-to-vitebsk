@@ -55,7 +55,7 @@ class TelegramUserParserService
         unset($initDataValues['hash']);
         ksort($initDataValues);
         $dataCheckString = implode("\n", array_map(
-            fn($n, $v) => "$n=$v",
+            fn ($n, $v) => "$n=$v",
             array_keys($initDataValues),
             $initDataValues,
         ));
