@@ -27,6 +27,9 @@ class RegisterWebhookAction extends Action
 
         $this->action(function (TelegraphBot $record): void {
             try {
+                $record->registerCommands([
+                    'menu' => 'Показать основное меню'
+                ])->send();
                 $record->registerWebhook()->send();
                 $this->success();
             } catch (Exception $e) {
