@@ -23,6 +23,7 @@ class TelegramUser extends Model
         'last_name',
         'username',
         'language_code',
+        'allows_write_to_pm',
     ];
 
     public function user(): BelongsTo

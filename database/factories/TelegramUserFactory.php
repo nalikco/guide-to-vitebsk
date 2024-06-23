@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\TelegramUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Random\RandomException;
 
 /**
  * @extends Factory<TelegramUser>
@@ -14,6 +15,8 @@ class TelegramUserFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
+     *
+     * @throws RandomException
      */
     #[\Override]
     public function definition(): array
@@ -24,6 +27,7 @@ class TelegramUserFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'username' => $this->faker->userName(),
             'language_code' => $this->faker->languageCode(),
+            'allows_write_to_pm' => $this->faker->boolean(),
         ];
     }
 }

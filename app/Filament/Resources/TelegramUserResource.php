@@ -13,8 +13,11 @@ use Filament\Tables\Table;
 class TelegramUserResource extends Resource
 {
     protected static ?string $model = TelegramUser::class;
+
     protected static ?string $label = 'Telegram пользователь';
+
     protected static ?string $pluralLabel = 'Telegram пользователи';
+
     protected static ?string $navigationGroup = 'Пользователи';
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';

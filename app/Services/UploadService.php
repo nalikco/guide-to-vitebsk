@@ -11,8 +11,8 @@ class UploadService
     /**
      * Replaces all images of the desired model.
      *
-     * @param Imageable $imageable The model for which images need to be replaced.
-     * @param Collection<int, string> $images Replaceable images. Example image: "places/qwerty.jpg"
+     * @param  Imageable  $imageable  The model for which images need to be replaced.
+     * @param  Collection<int, string>  $images  Replaceable images. Example image: "places/qwerty.jpg"
      * @return Imageable Updated model.
      */
     public function replaceImages(Imageable $imageable, Collection $images): Imageable

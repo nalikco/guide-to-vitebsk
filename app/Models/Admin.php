@@ -12,7 +12,7 @@ use Override;
 
 class Admin extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable, MustVerifyEmail;
+    use HasFactory, MustVerifyEmail, Notifiable;
 
     /**
      * The attributes that are mass assignable.

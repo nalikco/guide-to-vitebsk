@@ -15,8 +15,11 @@ use Override;
 class AdminResource extends Resource
 {
     protected static ?string $model = Admin::class;
+
     protected static ?string $label = 'Администратор';
+
     protected static ?string $pluralLabel = 'Администраторы';
+
     protected static ?string $navigationGroup = 'Пользователи';
 
     protected static ?string $navigationIcon = 'heroicon-o-star';

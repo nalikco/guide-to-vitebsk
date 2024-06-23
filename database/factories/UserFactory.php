@@ -19,6 +19,8 @@ class UserFactory extends Factory
     #[Override]
     public function definition(): array
     {
-        return [];
+        return [
+            'username' => $this->faker->userName(),
+        ];
     }
 }

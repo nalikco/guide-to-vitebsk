@@ -15,8 +15,11 @@ use Filament\Tables\Table;
 class PlaceCategoryResource extends Resource
 {
     protected static ?string $model = PlaceCategory::class;
+
     protected static ?string $label = 'Категория мест';
+
     protected static ?string $pluralLabel = 'Категории мест';
+
     protected static ?string $navigationGroup = 'Места';
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
@@ -25,7 +28,7 @@ class PlaceCategoryResource extends Resource
     public static function form(Form $form): Form
     {
         $parentCategoriesQuery = PlaceCategory::query();
-        if (!is_string($form->model)) {
+        if (! is_string($form->model)) {
             $parentCategoriesQuery->whereNot('id', $form->model->id);
         }
 

@@ -20,14 +20,14 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
         $this->hideSensitiveRequestDetails();
 
-//        $isLocal = $this->app->environment('local');
+        //        $isLocal = $this->app->environment('local');
 
-//        Telescope::filter(fn(IncomingEntry $entry) => $isLocal ||
-//            $entry->isReportableException() ||
-//            $entry->isFailedRequest() ||
-//            $entry->isFailedJob() ||
-//            $entry->isScheduledTask() ||
-//            $entry->hasMonitoredTag());
+        //        Telescope::filter(fn(IncomingEntry $entry) => $isLocal ||
+        //            $entry->isReportableException() ||
+        //            $entry->isFailedRequest() ||
+        //            $entry->isFailedJob() ||
+        //            $entry->isScheduledTask() ||
+        //            $entry->hasMonitoredTag());
     }
 
     /**
@@ -56,6 +56,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     #[Override]
     protected function gate(): void
     {
-        Gate::define('viewTelescope', fn(Admin $user) => $user->hasVerifiedEmail());
+        Gate::define('viewTelescope', fn (Admin $user) => $user->hasVerifiedEmail());
     }
 }

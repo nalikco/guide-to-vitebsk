@@ -10,7 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPlace extends EditRecord
 {
     use EditableImages;
-    
+
     protected static string $resource = PlaceResource::class;
 
     #[\Override]

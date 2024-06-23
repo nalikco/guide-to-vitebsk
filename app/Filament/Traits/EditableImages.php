@@ -15,7 +15,7 @@ trait EditableImages
         $record = static::getRecord();
 
         foreach ($record->images as $image) {
-            $data['images'][] = sprintf("%s/%s.%s", $this->record->getImagesPath(), $image->name, $image->extension);
+            $data['images'][] = sprintf('%s/%s.%s', $this->record->getImagesPath(), $image->name, $image->extension);
         }
 
         return $data;

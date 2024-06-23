@@ -18,8 +18,11 @@ use Filament\Tables\Table;
 class PlaceResource extends Resource
 {
     protected static ?string $model = Place::class;
+
     protected static ?string $label = 'Место';
+
     protected static ?string $pluralLabel = 'Места';
+
     protected static ?string $navigationGroup = 'Места';
 
     protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
@@ -158,7 +161,7 @@ class PlaceResource extends Resource
                     ->label(__('telegram_user.fields.id')),
                 Tables\Columns\ImageColumn::make('images')
                     ->square()
-                    ->getStateUsing(fn(Place $record) => $record->images->map(fn(Upload $image) => asset(sprintf('storage/%s/%s.%s', $record->getImagesPath(), $image->name, $image->extension)))->reverse())
+                    ->getStateUsing(fn (Place $record) => $record->images->map(fn (Upload $image) => asset(sprintf('storage/%s/%s.%s', $record->getImagesPath(), $image->name, $image->extension)))->reverse())
                     ->label(__('place.fields.images')),
                 Tables\Columns\CheckboxColumn::make('active')
                     ->sortable()

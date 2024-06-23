@@ -22,7 +22,7 @@ class UploadFactory extends Factory
         return [
             'path' => 'profiles',
             'name' => Str::uuid(),
-            'extension' => 'png'
+            'extension' => 'png',
         ];
     }
 }

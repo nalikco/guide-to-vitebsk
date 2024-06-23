@@ -5,7 +5,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -22,6 +23,7 @@ return new class extends Migration {
             $table->string('last_name')->nullable();
             $table->string('username');
             $table->string('language_code');
+            $table->boolean('allows_write_to_pm');
             $table->softDeletes();
             $table->timestamps();
         });
