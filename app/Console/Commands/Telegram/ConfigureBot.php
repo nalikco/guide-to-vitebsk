@@ -26,14 +26,11 @@ class ConfigureBot extends Command
      */
     public function handle(): int
     {
-        $bot = TelegraphBot::query()->firstOrCreate([
+        TelegraphBot::query()->firstOrCreate([
             'token' => config('telegram.bot_token'),
         ], [
             'name' => '',
         ]);
-
-        $bot->registerCommands([])->send();
-        $bot->registerWebhook()->send();
 
         return self::SUCCESS;
     }

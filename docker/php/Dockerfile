@@ -8,6 +8,4 @@ ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/relea
 
 RUN install-php-extensions gd intl zip pgsql pdo_pgsql redis yaml decimal bcmath bz2
 
-RUN apk add nodejs npm
-
 WORKDIR /var/www

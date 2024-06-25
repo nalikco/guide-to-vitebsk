@@ -29,23 +29,9 @@ tasks:
   pint:
     desc: "Formats files using Pint."
     cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/pint
-  node:
-    desc: "Launches Node.js."
-    cmd: docker exec -it $CONTAINER_NAME node {{.CLI_ARGS}}
-  npm:
-    desc: "Launches NPM."
-    cmd: docker exec -it $CONTAINER_NAME npm {{.CLI_ARGS}}
   perms:
     desc: "Sets the necessary permissions on directories."
     cmd: sudo chmod 777 -R storage bootstrap/cache vendor
-  format:
-    desc: "Formats all code."
-    cmds:
-      - docker exec -it $CONTAINER_NAME npm run format
-      - task:
-          pint
-      - task:
-          rector
   test:
     desc: "Runs tests."
     cmd: docker exec -it $CONTAINER_NAME php artisan test {{.CLI_ARGS}}
