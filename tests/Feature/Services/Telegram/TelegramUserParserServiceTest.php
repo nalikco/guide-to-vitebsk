@@ -18,26 +18,26 @@ $initDataArray = [
     'hash' => 'a572c00d30c1407ec9d7357241b1558c6ec5fcc41cffe6484d0efca54423511b',
 ];
 
-it('get user from init data', function () use ($token, $initDataArray) {
+it('should check', function () use ($token, $initDataArray) {
     $result = TelegramInitDataCheckerService::check($token, TelegramInitData::from($initDataArray));
 
     expect($result)->toBeTrue();
 });
 
-it('get user from init data err: invalid token', function () use ($initDataArray) {
+it('should return false: invalid token', function () use ($initDataArray) {
     $result = TelegramInitDataCheckerService::check('invalid', TelegramInitData::from($initDataArray));
 
     expect($result)->toBeFalse();
 });
 
-it('get user from init data err: invalid hash', function () use ($token, $initDataArray) {
+it('should return false: invalid hash', function () use ($token, $initDataArray) {
     $localInitDataArray = [...$initDataArray, 'hash' => 'invalid'];
     $result = TelegramInitDataCheckerService::check($token, TelegramInitData::from($localInitDataArray));
 
     expect($result)->toBeFalse();
 });
 
-it('get user from init data err: invalid struct', function () use ($token, $initDataArray) {
+it('should return false: invalid struct', function () use ($token, $initDataArray) {
     $localInitDataArray = [...$initDataArray, 'user' => [...$initDataArray['user'], 'id' => 0]];
     $result = TelegramInitDataCheckerService::check($token, TelegramInitData::from($localInitDataArray));
 
