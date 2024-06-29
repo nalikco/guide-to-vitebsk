@@ -17,8 +17,7 @@
         "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
-        "spatie/laravel-data": "^4.6",
-        "spatie/laravel-route-attributes": "^1.22"
+        "spatie/laravel-data": "^4.6"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^1.2",
