@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('telegram_id')->unique();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('username');
-            $table->rememberToken();
+            $table->string('language_code');
+            $table->boolean('allows_write_to_pm');
             $table->timestamps();
             $table->softDeletes();
         });

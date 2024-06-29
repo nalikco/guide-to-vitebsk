@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Model
 {
     use HasFactory, Notifiable, SoftDeletes;
 
@@ -18,20 +17,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'telegram_id',
+        'first_name',
+        'last_name',
         'username',
+        'language_code',
+        'allows_write_to_pm',
     ];
-
-    /**
-     * The attributes that must be loaded.
-     *
-     * @var array<int, string>
-     */
-    protected $with = [
-        'telegramUser',
-    ];
-
-    public function telegramUser(): HasOne
-    {
-        return $this->hasOne(TelegramUser::class);
-    }
 }

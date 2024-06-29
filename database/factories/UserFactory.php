@@ -20,7 +20,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'telegram_id' => random_int(100000, 999999),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'username' => $this->faker->userName(),
+            'language_code' => $this->faker->languageCode(),
+            'allows_write_to_pm' => $this->faker->boolean(),
         ];
     }
 }

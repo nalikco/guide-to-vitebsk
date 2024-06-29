@@ -13,6 +13,6 @@ class PlaceView extends Model
      */
     protected $fillable = [
         'place_id',
-        'telegram_user_id',
+        'user_id',
     ];
 }

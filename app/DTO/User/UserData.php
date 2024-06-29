@@ -9,14 +9,13 @@ use Spatie\LaravelData\Data;
 class UserData extends Data
 {
     public function __construct(
-        public int              $id,
-        public string           $username,
+        public int $id,
+        public string $username,
         public TelegramUserData $telegramUser,
         #[MapName('created_at')]
-        public string           $createdAt,
+        public string $createdAt,
         #[MapName('updated_at')]
-        public string           $updatedAt,
-    )
-    {
+        public string $updatedAt,
+    ) {
     }
 }
