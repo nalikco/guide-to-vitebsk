@@ -5,14 +5,18 @@ namespace App\Console\Commands\Telegram;
 use App\Models\TelegraphBot;
 use Illuminate\Console\Command;
 
-class ConfigureBot extends Command
+use function Laravel\Prompts\outro;
+use function Laravel\Prompts\password;
+use function Laravel\Prompts\text;
+
+class MakeTelegramBotCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'telegram:configure-bot';
+    protected $signature = 'make:telegram-bot';
 
     /**
      * The console command description.
@@ -26,11 +30,16 @@ class ConfigureBot extends Command
      */
     public function handle(): int
     {
+        $token = password('Please, enter token:', required: true);
+        $name = text('Please, enter name:');
+
         TelegraphBot::query()->firstOrCreate([
-            'token' => config('telegram.bot_token'),
+            'token' => $token,
         ], [
-            'name' => '',
+            'name' => $name,
         ]);
+
+        outro('Bot successfully set up.');
 
         return self::SUCCESS;
     }
