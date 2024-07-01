@@ -17,11 +17,6 @@ tasks:
   down:
     desc: "Stops and deletes application containers."
     cmd: docker compose --env-file $ENV_FILE down {{.CLI_ARGS}}
-  prepare:
-    cmds:
-      - docker exec $CONTAINER_NAME composer install
-      - docker exec $CONTAINER_NAME php artisan migrate --force
-      - docker exec $CONTAINER_NAME php artisan storage:link
   artisan:
     desc: "Launches Laravel Artisan."
     cmd: docker exec -it $CONTAINER_NAME php artisan {{.CLI_ARGS}}
