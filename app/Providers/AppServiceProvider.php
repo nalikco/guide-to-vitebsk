@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(InitDataCheckerServiceInterface::class, InitDataCheckerService::class);
         $this->app->singleton(UserCreatorInterface::class, UserProviderService::class);
 
-        if ($this->app->environment('prod')) {
+        if ($this->app->environment('production')) {
             $this->app->singleton(TokenGetterInterface::class, TokenProviderService::class);
         } else {
             $this->app->singleton(TokenGetterInterface::class, TokenGetterFake::class);
