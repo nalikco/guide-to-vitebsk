@@ -20,12 +20,13 @@ class Authenticator extends Component
     public function authenticate(string $initDataString): void
     {
         $token = app()->make(TokenGetterInterface::class)->get();
-        $initData = InitDtoFactory::make($initDataString);
         $dataCheckerService = app()->make(InitDataCheckerServiceInterface::class);
 
-        if (! $dataCheckerService->check($token, $initData)) {
+        if (! $dataCheckerService->check($token, $initDataString)) {
             throw new UnauthorizedHttpException('Invalid Telegram data.');
         }
+
+        $initData = InitDtoFactory::make($initDataString);
 
         $userCreator = app()->make(UserCreatorInterface::class);
         $user = $userCreator->getOrCreate($initData->user);
