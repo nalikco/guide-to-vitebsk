@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AdminResource\Pages;
 use App\Models\Admin;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -39,9 +38,6 @@ class AdminResource extends Resource
                     ->unique()
                     ->email()
                     ->maxLength(255),
-                DatePicker::make('email_verified_at')
-                    ->label(__('user.fields.email_verified_at'))
-                    ->nullable(),
                 TextInput::make('password')
                     ->label(__('user.fields.password'))
                     ->password()
@@ -67,10 +63,6 @@ class AdminResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->sortable()
                     ->label(__('user.fields.email')),
-                Tables\Columns\CheckboxColumn::make('email_verified_at')
-                    ->sortable()
-                    ->disabled()
-                    ->label(__('user.fields.email_verified_at')),
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->label(__('user.fields.name')),
