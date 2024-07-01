@@ -4,10 +4,11 @@ namespace App\Services\Telegram\InitData;
 
 use App\Contracts\Telegram\InitDataCheckerServiceInterface;
 use App\Dto\Telegram\InitDto;
+use Override;
 
 class InitDataCheckerService implements InitDataCheckerServiceInterface
 {
-    #[\Override]
+    #[Override]
     public function check(string $botToken, InitDto $initData): bool
     {
         $initDataArray = $initData->toArray();
