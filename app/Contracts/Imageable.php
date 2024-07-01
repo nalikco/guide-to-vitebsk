@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 interface Imageable
 {
+    public function getId(): int;
+
     /**
      * Returns the path where images are stored.
      *

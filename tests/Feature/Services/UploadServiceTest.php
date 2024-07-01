@@ -30,11 +30,12 @@ it('can replace images', function () {
     $imageable = Mockery::mock(Imageable::class, function (MockInterface $mock) use ($morphManyMock) {
         $mock->shouldReceive('images')
             ->andReturn($morphManyMock);
+        $mock->shouldReceive('getId', 1);
         $mock->shouldReceive('getImagesPath')->andReturn('places');
 
         return $mock;
     });
 
-    $uploadService = new UploadService();
+    $uploadService = $this->app->make(UploadService::class);
     $uploadService->replaceImages($imageable, $images);
 });

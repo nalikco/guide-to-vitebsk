@@ -53,4 +53,10 @@ class Place extends Model implements Imageable
     {
         return 'places';
     }
+
+    #[\Override]
+    public function getId(): int
+    {
+        return $this->id;
+    }
 }
