@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\PlaceCategory;
-use App\Models\TelegraphBot;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,10 +14,6 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(TelegraphBot::class, 'bot_id')
-                ->constrained('telegraph_bots')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->foreignIdFor(PlaceCategory::class, 'category_id')
                 ->constrained('place_categories')
                 ->cascadeOnUpdate()

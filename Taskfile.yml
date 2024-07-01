@@ -23,12 +23,11 @@ tasks:
   composer:
     desc: "Launches Composer."
     cmd: docker exec -it $CONTAINER_NAME composer {{.CLI_ARGS}}
-  rector:
+  format:
     desc: "Formats files using Rector."
-    cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/rector
-  pint:
-    desc: "Formats files using Pint."
-    cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/pint
+    cmds:
+      - docker exec -it $CONTAINER_NAME ./vendor/bin/pint
+      - docker exec -it $CONTAINER_NAME ./vendor/bin/rector
   perms:
     desc: "Sets the necessary permissions on directories."
     cmd: sudo chmod 777 -R storage bootstrap/cache vendor

@@ -16,14 +16,16 @@ return RectorConfig::configure()
         __DIR__.'/database',
         __DIR__.'/lang',
         __DIR__.'/public',
-        //         __DIR__.'/resources',
+        __DIR__.'/resources',
         __DIR__.'/routes',
         __DIR__.'/tests',
     ])
     ->withSets([
         SetList::DEAD_CODE,
+        SetList::CODE_QUALITY,
         LevelSetList::UP_TO_PHP_83,
         LaravelSetList::LARAVEL_110,
+        LaravelSetList::LARAVEL_CODE_QUALITY,
     ])
     ->withRules([
         AddVoidReturnTypeWhereNoReturnRector::class,

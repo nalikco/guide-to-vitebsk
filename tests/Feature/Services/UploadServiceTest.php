@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Mockery\MockInterface;
 
 it('can replace images', function () {
-    $images = collect(['places/name.png', 'places/name.jpg']);
+    $images = new \Illuminate\Support\Collection(['places/name.png', 'places/name.jpg']);
 
     $morphManyMock = Mockery::mock(Illuminate\Database\Eloquent\Relations\MorphMany::class, function (MockInterface $mock) {
         $mock->shouldReceive('forceDelete')->once();

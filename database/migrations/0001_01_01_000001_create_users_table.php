@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('language_code');
             $table->boolean('allows_write_to_pm');
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

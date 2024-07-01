@@ -12,7 +12,7 @@ trait CreatableImages
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $this->images = collect($data['images']);
+        $this->images = new \Illuminate\Support\Collection($data['images']);
 
         return $data;
     }

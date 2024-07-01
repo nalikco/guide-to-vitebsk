@@ -32,13 +32,6 @@ class PlaceResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('bot_id')
-                    ->relationship(name: 'bot', titleAttribute: 'name')
-                    ->label(__('place.fields.bot'))
-                    ->native(false)
-                    ->required()
-                    ->searchable()
-                    ->preload(),
                 Select::make('category_id')
                     ->relationship(name: 'category', titleAttribute: 'name')
                     ->label(__('place.fields.category'))
@@ -105,16 +98,6 @@ class PlaceResource extends Resource
                     ->required()
                     ->string()
                     ->maxLength(255),
-                TextInput::make('address')
-                    ->label(__('place.fields.address'))
-                    ->required()
-                    ->string()
-                    ->maxLength(255),
-                RichEditor::make('description')
-                    ->label(__('place.fields.description'))
-                    ->required()
-                    ->string()
-                    ->maxLength(2500),
                 FileUpload::make('images')
                     ->label(__('place.fields.images'))
                     ->multiple()
@@ -125,6 +108,16 @@ class PlaceResource extends Resource
                     ->required()
                     ->minFiles(1)
                     ->maxFiles(5),
+                RichEditor::make('description')
+                    ->label(__('place.fields.description'))
+                    ->required()
+                    ->string()
+                    ->maxLength(2500),
+                TextInput::make('address')
+                    ->label(__('place.fields.address'))
+                    ->required()
+                    ->string()
+                    ->maxLength(255),
                 TextInput::make('phone_number')
                     ->label(__('place.fields.phone_number'))
                     ->string()

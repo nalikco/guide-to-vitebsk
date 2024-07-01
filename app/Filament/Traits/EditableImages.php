@@ -23,7 +23,7 @@ trait EditableImages
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $this->images = collect($data['images']);
+        $this->images = new \Illuminate\Support\Collection($data['images']);
 
         return $data;
     }
