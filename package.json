@@ -3,13 +3,17 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "lint": "eslint ./resources/ts/**/*.vue ./resources/ts/**/*.ts",
+        "format": "prettier ./resources/ts/**/*.vue ./resources/ts/**/*.ts  --write"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
         "axios": "^1.6.4",
+        "globals": "^15.9.0",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.41",
+        "prettier": "^3.3.3",
         "tailwindcss": "^3.4.10",
         "vite": "^5.0"
     },

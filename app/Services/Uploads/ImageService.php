@@ -5,17 +5,22 @@ declare(strict_types=1);
 namespace App\Services\Uploads;
 
 use App\Contracts\Uploads\ImageServiceContract;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Override;
 use Psr\Log\LoggerInterface;
+use Throwable;
 
 readonly class ImageService implements ImageServiceContract
 {
     public function __construct(
-        private LoggerInterface $logger, private \Illuminate\Database\DatabaseManager $databaseManager,
+        private LoggerInterface $logger, private DatabaseManager $databaseManager,
     ) {}
 
+    /**
+     * @throws Throwable
+     */
     #[Override]
     public function replaceImages(Model $imageable, int $imageableId, string $path, Collection $images): Model
     {

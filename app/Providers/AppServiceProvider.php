@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Contracts\Telegram\InitDataCheckerServiceContract;
-use App\Contracts\Telegram\TokenProviderContract;
+use App\Contracts\Telegram\TokenServiceContract;
 use App\Contracts\Uploads\ImageServiceContract;
 use App\Services\Telegram\InitDataCheckerService;
+use App\Services\Telegram\TestTokenService;
 use App\Services\Telegram\TokenService;
 use App\Services\Uploads\ImageService;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +25,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(ImageServiceContract::class, ImageService::class);
 
         $this->app->singleton(InitDataCheckerServiceContract::class, InitDataCheckerService::class);
-        $this->app->singleton(TokenProviderContract::class, TokenService::class);
+
+        if ($this->app->environment('local')) {
+            $this->app->singleton(TokenServiceContract::class, TestTokenService::class);
+        } else {
+            $this->app->singleton(TokenServiceContract::class, TokenService::class);
+        }
     }
 
     /**

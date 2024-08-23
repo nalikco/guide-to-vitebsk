@@ -11,6 +11,6 @@ class HomeController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Home');
+        return Inertia::render('home');
     }
 }

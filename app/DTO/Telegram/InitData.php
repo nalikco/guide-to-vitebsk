@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Dto\Telegram;
+namespace App\DTO\Telegram;
 
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;

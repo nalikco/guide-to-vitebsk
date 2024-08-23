@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factories\Telegram;
 
-use App\Dto\Telegram\InitData;
+use App\DTO\Telegram\InitData;
 
 readonly class InitDataFactory
 {
