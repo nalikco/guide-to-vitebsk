@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\DTO\Place;
 
-use App\Models\User;
+use Carbon\Carbon;
+use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
@@ -12,23 +13,26 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 class UserData extends Data
 {
     public function __construct(
+        #[MapName('id')]
+        public int $id,
+
+        #[MapName('telegram_id')]
         public int $telegramId,
+
+        #[MapName('first_name')]
         public string $firstName,
+
+        #[MapName('last_name')]
         public string $lastName,
         public string $username,
-        public string $languageCode,
-        public bool $allowsWriteToPm,
-    ) {}
 
-    public static function fromUser(User $user): self
-    {
-        return self::from([
-            'telegramId' => $user->telegram_id,
-            'firstName' => $user->first_name,
-            'lastName' => $user->last_name,
-            'username' => $user->username,
-            'languageCode' => $user->language_code,
-            'allowsWriteToPm' => $user->allows_write_to_pm,
-        ]);
-    }
+        #[MapName('language_code')]
+        public string $languageCode,
+
+        #[MapName('allows_write_to_pm')]
+        public bool $allowsWriteToPm,
+
+        #[MapName('created_at')]
+        public Carbon $createdAt,
+    ) {}
 }
