@@ -4,6 +4,8 @@ parent: App.DTO.Place.PlaceCategoryData | null;
 name: string;
 imageUrl: string;
 };
+}
+declare namespace App.DTO.User {
 export type UserData = {
 id: number;
 telegramId: number;
